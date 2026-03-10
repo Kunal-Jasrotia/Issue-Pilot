@@ -1,0 +1,34 @@
+{
+  "name": "issuepilot",
+  "version": "1.0.0",
+  "description": "IssuePilot CLI — solve GitHub issues with AI",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "issuepilot": "./dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && chmod +x dist/index.js",
+    "dev": "tsx src/index.ts",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@issuepilot/agent": "workspace:*",
+    "@issuepilot/llm": "workspace:*",
+    "@issuepilot/github": "workspace:*",
+    "dotenv": "^16.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.11.0",
+    "tsx": "^4.11.0"
+  }
+}

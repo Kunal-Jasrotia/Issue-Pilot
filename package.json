@@ -1,0 +1,52 @@
+{
+  "name": "issuepilot",
+  "version": "1.0.0",
+  "description": "AI-powered GitHub issue resolver — connects an AI agent to your repository to automatically solve issues and create pull requests",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "setup:ci": "node scripts/setup.mjs --ci --build",
+    "setup:build": "node scripts/setup.mjs --build",
+    "build": "node scripts/build-packages.mjs",
+    "build:all": "node scripts/build-packages.mjs --all",
+    "build:turbo": "turbo run build",
+    "dev": "turbo run dev",
+    "dev:api": "pnpm --filter @issuepilot/api dev",
+    "dev:web": "pnpm --filter @issuepilot/web dev",
+    "webhook:dev": "node scripts/webhook-proxy.mjs",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "type-check": "turbo run type-check",
+    "gen-keys": "node scripts/gen-keys.mjs",
+    "gen-keys:write": "node scripts/gen-keys.mjs --write",
+    "db:migrate": "node scripts/migrate.mjs",
+    "db:generate": "pnpm --filter @issuepilot/api db:generate",
+    "infra:up": "docker compose --env-file .env -f docker/docker-compose.yml up postgres redis qdrant -d",
+    "infra:down": "docker compose --env-file .env -f docker/docker-compose.yml down",
+    "infra:logs": "docker compose --env-file .env -f docker/docker-compose.yml logs -f",
+    "docker:up": "docker compose --env-file .env -f docker/docker-compose.yml up -d",
+    "docker:down": "docker compose --env-file .env -f docker/docker-compose.yml down"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "turbo": "^2.1.0",
+    "typescript": "^5.4.0",
+    "prettier": "^3.2.0",
+    "eslint": "^8.57.0",
+    "smee-client": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "pnpm": {
+    "overrides": {
+      "esbuild": "0.19.12"
+    }
+  }
+}

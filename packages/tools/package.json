@@ -1,0 +1,29 @@
+{
+  "name": "@issuepilot/tools",
+  "version": "1.0.0",
+  "description": "Agent tool implementations for IssuePilot",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@issuepilot/llm": "workspace:*",
+    "simple-git": "^3.24.0",
+    "glob": "^11.0.0",
+    "ignore": "^5.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.11.0"
+  }
+}

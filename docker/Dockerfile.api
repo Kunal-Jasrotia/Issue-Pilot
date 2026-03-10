@@ -1,0 +1,46 @@
+# Build stage
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Install pnpm
+RUN corepack enable && corepack prepare pnpm@9 --activate
+
+# Copy workspace files
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml turbo.json tsconfig.base.json ./
+COPY packages/ ./packages/
+COPY apps/api/ ./apps/api/
+
+# Install dependencies
+RUN pnpm install --frozen-lockfile --ignore-scripts
+
+# Build packages in order
+RUN pnpm --filter @issuepilot/llm build
+RUN pnpm --filter @issuepilot/tools build
+RUN pnpm --filter @issuepilot/github build
+RUN pnpm --filter @issuepilot/vector build
+RUN pnpm --filter @issuepilot/sandbox build
+RUN pnpm --filter @issuepilot/agent build
+RUN pnpm --filter @issuepilot/api build
+
+# Production stage
+FROM node:20-alpine AS runner
+
+WORKDIR /app
+
+RUN corepack enable && corepack prepare pnpm@9 --activate
+
+# Copy built files
+COPY --from=builder /app/package.json /app/pnpm-lock.yaml /app/pnpm-workspace.yaml ./
+COPY --from=builder /app/packages/ ./packages/
+COPY --from=builder /app/apps/api/ ./apps/api/
+
+# Install production deps only
+RUN pnpm install --frozen-lockfile --prod --ignore-scripts
+
+# Create repos directory
+RUN mkdir -p /repos
+
+EXPOSE 3001
+
+CMD ["node", "apps/api/dist/index.js"]

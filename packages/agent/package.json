@@ -1,0 +1,30 @@
+{
+  "name": "@issuepilot/agent",
+  "version": "1.0.0",
+  "description": "AI agent orchestration pipeline for IssuePilot",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@issuepilot/llm": "workspace:*",
+    "@issuepilot/tools": "workspace:*",
+    "@issuepilot/github": "workspace:*",
+    "@issuepilot/sandbox": "workspace:*",
+    "@issuepilot/vector": "workspace:*"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.11.0"
+  }
+}

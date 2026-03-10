@@ -1,0 +1,29 @@
+{
+  "name": "@issuepilot/github",
+  "version": "1.0.0",
+  "description": "GitHub integration for IssuePilot using Octokit",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.0.0",
+    "@octokit/auth-oauth-app": "^7.1.0",
+    "@octokit/webhooks": "^13.3.0",
+    "simple-git": "^3.24.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "@types/node": "^20.11.0"
+  }
+}
