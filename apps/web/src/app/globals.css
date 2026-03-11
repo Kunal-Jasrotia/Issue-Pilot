@@ -51,4 +51,46 @@
   .glow-brand {
     box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.3), 0 0 12px rgba(14, 165, 233, 0.1);
   }
+
+  /* Glass card effect */
+  .glass {
+    @apply border border-white/5 bg-white/[0.03] backdrop-blur-sm;
+  }
+
+  /* Gradient border via background-clip */
+  .gradient-border {
+    background: linear-gradient(var(--tw-gradient-from), var(--tw-gradient-to));
+    padding: 1px;
+  }
+
+  /* Scanline effect for terminal */
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.05) 2px,
+      rgba(0, 0, 0, 0.05) 4px
+    );
+  }
+}
+
+/* Shimmer animation for skeleton/loading */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Glow pulse for live indicator */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 4px 1px rgba(59, 130, 246, 0.5); }
+  50%       { box-shadow: 0 0 8px 2px rgba(59, 130, 246, 0.8); }
+}
+.glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
 }
