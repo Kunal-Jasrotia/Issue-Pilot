@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f pnpm-lock.yaml)",
+      "Bash(rm -rf node_modules)",
+      "Bash(pnpm install)",
+      "Bash(node scripts/gen-keys.js)",
+      "Bash(node scripts/build-packages.js)",
+      "Bash(pnpm --filter @issuepilot/llm build)",
+      "Bash(pnpm --filter @issuepilot/tools build)",
+      "Bash(pnpm --filter @issuepilot/sandbox build)",
+      "Bash(pnpm --filter @issuepilot/agent build)",
+      "Bash(pnpm --filter @issuepilot/api build)",
+      "Bash(node packages/cli/dist/index.js --version)",
+      "Bash(mv setup.js setup.mjs)",
+      "Bash(mv gen-keys.js gen-keys.mjs)",
+      "Bash(mv build-packages.js build-packages.mjs)",
+      "Bash(mv migrate.js migrate.mjs)",
+      "Bash(node scripts/gen-keys.mjs)",
+      "Bash(node scripts/build-packages.mjs)",
+      "Bash(node packages/cli/dist/index.js --help)",
+      "Bash(docker compose -f docker/docker-compose.yml build api web)",
+      "Bash(docker compose -f docker/docker-compose.yml build api)",
+      "Bash(docker compose -f docker/docker-compose.yml build web)",
+      "Bash(docker compose -f docker/docker-compose.yml up -d)",
+      "Bash(docker run --rm --entrypoint sh qdrant/qdrant -c \"which wget curl\")",
+      "Bash(docker compose -f docker/docker-compose.yml ps)",
+      "Bash(curl -s http://localhost:3001/health)",
+      "Bash(docker compose --project-directory . -f docker/docker-compose.yml down)",
+      "Bash(docker compose --project-directory . -f docker/docker-compose.yml build api)",
+      "Bash(docker compose --env-file .env -f docker/docker-compose.yml build api)",
+      "Bash(docker compose --env-file .env -f docker/docker-compose.yml up -d)",
+      "Bash(curl -s \"http://localhost:3001/auth/github\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(netstat -ano)",
+      "Bash(where pnpm:*)",
+      "Bash(taskkill /PID 16232 /F)",
+      "Bash(cmd /c \"taskkill /PID 16232 /F\")",
+      "Bash(cmd /c \"netstat -ano | findstr :3000\")",
+      "Bash(cmd /c \"type apps\\\\web\\\\package.json\")"
+    ]
+  }
+}
