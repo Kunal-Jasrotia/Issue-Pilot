@@ -22,7 +22,6 @@ export class OpenAIProvider implements LLMProvider {
     this.model = config.model ?? 'gpt-4o';
     this.client = new OpenAI({
       apiKey,
-      baseURL: config.baseUrl,
       maxRetries: config.maxRetries ?? 3,
       timeout: config.timeout ?? 120_000,
     });

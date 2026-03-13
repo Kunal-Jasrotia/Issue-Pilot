@@ -25,15 +25,20 @@ function makeStep(name: string, success: boolean, output: string, startTime: num
 export async function runAgentPipeline(config: AgentConfig): Promise<AgentResult> {
   const { provider, repoPath, repository, issue, githubToken } = config;
   const steps: AgentStep[] = [];
-  const branchName = `ai/issue-${issue.number}-${slugify(issue.title)}`;
+  let branchName = `ai/issue-${issue.number}-${slugify(issue.title)}`;
 
   emit(config, 'started', `Starting agent pipeline for issue #${issue.number}: ${issue.title}`);
 
   // ── Step 1: Create branch ─────────────────────────────────────────────────
   let t = Date.now();
   try {
-    const branchResult = await createBranch({ branchName }, { repoPath });
-    if (!branchResult.success) throw new Error(branchResult.error);
+    let branchResult = await createBranch({ branchName }, { repoPath });
+    if (!branchResult.success) {
+      // Fallback attempt so the pipeline doesn't fail
+      branchName = `${branchName}-${Date.now()}`;
+      branchResult = await createBranch({ branchName }, { repoPath });
+      if (!branchResult.success) throw new Error(branchResult.error);
+    }
     steps.push(makeStep('Create Branch', true, `Branch created: ${branchName}`, t));
   } catch (err) {
     const msg = String(err);

@@ -19,7 +19,7 @@ authRouter.get('/me', async (_req: Request, res: Response) => {
     const { data: ghUser } = await octokit.users.getAuthenticated();
 
     // Upsert the single system user row so it always exists in the DB
-    const SYSTEM_USER_ID = '1';
+    const SYSTEM_USER_ID = '00000000-0000-0000-0000-000000000001';
     await db
       .insert(schema.users)
       .values({

@@ -21,7 +21,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }, []);
 
   return (
-    <div className="flex min-h-screen bg-gray-950">
+    <div className="flex h-screen bg-gray-950">
       {/* Sidebar */}
       <aside className="flex w-60 shrink-0 flex-col border-r border-gray-800/80 bg-gray-900/80">
         {/* Brand */}
@@ -94,7 +94,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 overflow-auto">{children}</main>
+      <main className="flex-1 min-h-0 overflow-hidden">{children}</main>
     </div>
   );
 }

@@ -3,9 +3,10 @@
   "configurations": [
     {
       "name": "web",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@issuepilot/web", "dev"],
-      "port": 3000
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "pnpm", "--filter", "@issuepilot/web", "dev"],
+      "port": 3000,
+      "autoPort": false
     }
   ]
 }

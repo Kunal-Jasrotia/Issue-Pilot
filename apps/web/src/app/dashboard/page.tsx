@@ -75,7 +75,7 @@ export default function DashboardPage() {
   const recentJobs = jobs.slice(0, 8);
 
   return (
-    <div className="p-8 space-y-8 max-w-5xl animate-fade-in">
+    <div className="h-full overflow-auto p-8 space-y-8 max-w-5xl animate-fade-in">
       {/* Header */}
       <div>
         <h1 className="text-xl font-semibold text-white">Overview</h1>

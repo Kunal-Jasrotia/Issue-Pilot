@@ -30,7 +30,14 @@
       "Bash(docker compose --project-directory . -f docker/docker-compose.yml build api)",
       "Bash(docker compose --env-file .env -f docker/docker-compose.yml build api)",
       "Bash(docker compose --env-file .env -f docker/docker-compose.yml up -d)",
-      "Bash(curl -s \"http://localhost:3001/auth/github\")"
+      "Bash(curl -s \"http://localhost:3001/auth/github\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(netstat -ano)",
+      "Bash(where pnpm:*)",
+      "Bash(taskkill /PID 16232 /F)",
+      "Bash(cmd /c \"taskkill /PID 16232 /F\")",
+      "Bash(cmd /c \"netstat -ano | findstr :3000\")",
+      "Bash(cmd /c \"type apps\\\\web\\\\package.json\")"
     ]
   }
 }

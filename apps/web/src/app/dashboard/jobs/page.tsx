@@ -234,7 +234,7 @@ export default function JobsPage() {
   }, []);
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-full overflow-hidden">
       {/* Job list sidebar */}
       <div className="flex w-72 shrink-0 flex-col border-r border-gray-800 bg-gray-900/50 overflow-hidden">
         <div className="flex h-14 items-center justify-between border-b border-gray-800 px-4">

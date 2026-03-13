@@ -81,7 +81,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="p-8 max-w-2xl space-y-6 animate-fade-in">
+    <div className="h-full overflow-auto p-8 max-w-2xl space-y-6 animate-fade-in">
       {/* Header */}
       <div>
         <h1 className="text-xl font-semibold text-white">Settings</h1>

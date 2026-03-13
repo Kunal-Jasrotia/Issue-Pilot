@@ -83,7 +83,7 @@ export default function RepositoriesPage() {
   };
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden">
+    <div className="flex h-full flex-col overflow-hidden">
       {/* Header + Connect form */}
       <div className="shrink-0 border-b border-gray-800 bg-gray-950/80 px-8 py-5">
         <div className="flex items-end justify-between gap-6">
